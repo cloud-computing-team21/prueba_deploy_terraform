@@ -40,4 +40,14 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
-        run: terraform init  
+        run: terraform init
+      - name: Terraform Validate
+        run: terraform validate
+        working-directory: ./infra
+
+      - name: Terraform Plan
+        run: terraform plan
+        continue-on-error: false
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve      
